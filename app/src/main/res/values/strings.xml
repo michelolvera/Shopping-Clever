@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Shopping Clever</string>
+    <string name="app_description">Descripcion</string>
+    <string name="login_text">Iniciar sesion o registrarse</string>
+    <string name="mail_hint">Correo</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="no_register_text">Llevame directo a la accion</string>
 </resources>
