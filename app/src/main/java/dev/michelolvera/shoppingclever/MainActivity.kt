@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?){
         user?.let{
-            Toast.makeText(this, "El usuario Existe y es: ${it.displayName}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "El usuario Existe y es: ${it.email}", Toast.LENGTH_SHORT).show()
         }
     }
 
