@@ -46,6 +46,18 @@
             app:layout_constraintTop_toBottomOf="@id/editTextTextPassword"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
+
+    <com.facebook.login.widget.LoginButton
+            android:id="@+id/fbLoginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            style="@style/MarginElements"
+            app:layout_constraintTop_toBottomOf="@id/buttonLogin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
