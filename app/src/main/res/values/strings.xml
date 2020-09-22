@@ -5,6 +5,7 @@
     <string name="mail_hint">Correo</string>
     <string name="password_hint">Contraseña</string>
     <string name="no_register_text">Llevame directo a la accion</string>
+    <string name="google_button">Inicia sesion con Google</string>
 
     <string name="facebook_app_id">1141038416297200</string>
     <string name="fb_login_protocol_scheme">fb1141038416297200</string>
