@@ -61,76 +61,21 @@ class MainActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
-                Toast.makeText(this, "Error al obtener credenciales de Usuario de Google: ${e}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Error al obtener credenciales de Usuario de Google: $e", Toast.LENGTH_SHORT).show()
             }
-        }else{
+        } else {
             callbackManager.onActivityResult(requestCode, resultCode, data)
         }
 
     }
 
-    private fun updateUI(user: FirebaseUser?){
-        user?.let{
+    private fun updateUI(user: FirebaseUser?) {
+        user?.let {
             Toast.makeText(this, "El usuario Existe y es: ${if (user.isAnonymous) "anonimo" else user.email}", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun createAccount(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful){
-                    Toast.makeText(this, "Usuario Creado", Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(this, "Error al crear Usuario ${task.exception}", Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
-
-    private fun signIn(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful){
-                    Toast.makeText(this, "Sesion Iniciada", Toast.LENGTH_SHORT).show()
-                }else{
-                    try {
-                        throw task.exception!!
-                    }catch (e: FirebaseAuthInvalidUserException){
-                        createAccount(email, password)
-                    }catch (e: Exception){
-                        Toast.makeText(this, "Error al Iniciar Sesion: ${task.exception}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-    }
-
-    private fun googleSignIn(){
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, GOOGLE_SIGN_IN)
-    }
-
-    private fun firebaseAuthWithGoogle(idToken: String) {
-        val credential = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-                updateUI(auth.currentUser)
-            } else {
-                Toast.makeText(this, "Error al crear Usuario de Google ${task.exception}", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun handleFacebookAccessToken(token: AccessToken){
-        val credential = FacebookAuthProvider.getCredential(token.token)
-        auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-                updateUI(auth.currentUser)
-            } else {
-                Toast.makeText(this, "Error al crear Usuario de FB ${task.exception}", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun addActivityListeners (){
+    private fun addActivityListeners() {
         buttonLogin.setOnClickListener {
             signIn(editTextTextEmailAddress.text.toString().trim(), editTextTextPassword.text.toString().trim())
         }
@@ -158,12 +103,67 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun anonymousSignIn(){
+    private fun createAccount(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Usuario Creado", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this, "Error al crear Usuario ${task.exception}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+    }
+
+    private fun signIn(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Sesion Iniciada", Toast.LENGTH_SHORT).show()
+                    } else {
+                        try {
+                            throw task.exception!!
+                        } catch (e: FirebaseAuthInvalidUserException) {
+                            createAccount(email, password)
+                        } catch (e: Exception) {
+                            Toast.makeText(this, "Error al Iniciar Sesion: ${task.exception}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+    }
+
+    private fun anonymousSignIn() {
         auth.signInAnonymously().addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
                 updateUI(auth.currentUser)
-            }else{
+            } else {
                 Toast.makeText(this, "Error al crear Usuario Anonimo ${task.exception}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun googleSignIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent, GOOGLE_SIGN_IN)
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                updateUI(auth.currentUser)
+            } else {
+                Toast.makeText(this, "Error al crear Usuario de Google ${task.exception}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth.signInWithCredential(credential).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                updateUI(auth.currentUser)
+            } else {
+                Toast.makeText(this, "Error al crear Usuario de FB ${task.exception}", Toast.LENGTH_SHORT).show()
             }
         }
     }
