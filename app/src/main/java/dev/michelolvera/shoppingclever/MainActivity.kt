@@ -15,6 +15,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,6 +31,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         auth = Firebase.auth
+
+        try {
+            intent.extras!!["persistance"]
+        }catch (e: NullPointerException){
+            Firebase.database.setPersistenceEnabled(true)
+        }
 
         // Initialize Facebook Login button
         callbackManager = CallbackManager.Factory.create()
@@ -71,16 +78,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         user?.let {
-            Toast.makeText(this, "El usuario Existe y es: ${if (user.isAnonymous) "anonimo" else user.email}", Toast.LENGTH_SHORT).show()
+            val mainActivityIntent = Intent(this, AppActivity::class.java)
+            mainActivityIntent.putExtra("user", user)
+            startActivity(mainActivityIntent)
+            finish()
         }
     }
 
     private fun addActivityListeners() {
         buttonLogin.setOnClickListener {
-            signIn(editTextTextEmailAddress.text.toString().trim(), editTextTextPassword.text.toString().trim())
+            signIn(editTextTextEmailAddress.editText.toString().trim(), editTextTextPassword.editText.toString().trim())
         }
 
-        fbLoginButton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+        fbLoginButton.registerCallback(callbackManager, object: FacebookCallback<LoginResult> {
             override fun onSuccess(loginResult: LoginResult) {
                 handleFacebookAccessToken(loginResult.accessToken)
             }
