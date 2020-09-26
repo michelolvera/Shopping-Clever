@@ -24,4 +24,11 @@
 
     <string name="content_description_email">Mail Icon</string>
     <string name="content_description_password">Password Icon</string>
+
+    <string name="dialog_list_title">Nueva lista</string>
+    <string name="dialog_list_name_hint">Escribe el título de la lista</string>
+    <string name="dialog_list_info_tema">Selecciona el tema de la lista</string>
+
+    <string name="acept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
 </resources>

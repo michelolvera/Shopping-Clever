@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:padding="@dimen/espacio_elementos"
+>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_list_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/title_dialog_layout"
+    />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/title_dialog_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:hint="@string/dialog_list_name_hint"
+        style="@style/MarginElements"
+        android:id="@+id/title_input"
+    >
+        <com.google.android.material.textfield.TextInputEditText
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_list_info_tema"
+            app:layout_constraintTop_toBottomOf="@id/title_input"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            style="@style/MarginElements"
+            android:id="@+id/selector_color_text"
+    />
+
+    <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/MarginElements"
+            app:layout_constraintTop_toBottomOf="@id/selector_color_text"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+    >
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="wrap_content"
+                                                           android:layout_height="wrap_content">
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_1"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_2"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_3"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_4"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_5"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_6"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_7"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_7"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_8"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_9"
+            />
+
+            <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_color_lens"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_color_9"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_margin="4dp"
+                    android:id="@+id/btn_color_10"
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </HorizontalScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

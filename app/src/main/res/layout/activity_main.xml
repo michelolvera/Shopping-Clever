@@ -34,7 +34,6 @@
                 android:layout_width="match_parent"
                 style="@style/MarginElements"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:hint="@string/mail_hint"
                 android:ems="10"
                 app:startIconDrawable="@drawable/ic_alternate_email"
@@ -44,6 +43,7 @@
                 app:layout_constraintRight_toRightOf="parent"
                 android:id="@+id/editTextTextEmailAddress">
                 <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="textEmailAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                 />
